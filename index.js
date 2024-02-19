@@ -369,7 +369,7 @@
     };
 
     var replaceContent = function(el) {
-        el.innerHTML = el.innerHTML.replace(/(\d{4})(?=\D|$)/g, function(match, areaCode) {
+        el.innerHTML = el.innerHTML.replace(/(\d{3})(?=\D|$)/g, function(match, areaCode) {
             if (areaCodes.hasOwnProperty(areaCode)) {
                 return '<span>' + match + '</span>' + '(' + '<span  style="color:#EE6F2D">' + areaCodes[areaCode] + '</span>' + ')';
             }
