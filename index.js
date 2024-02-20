@@ -1,12 +1,15 @@
 // ==UserScript==
-// @name         V2EX area code conversion
+// @name         V2EX 区号转换器
 // @namespace    https://github.com/Steve5wutongyu6/v2ex-area-code-conversion
-// @version      0.1
+// @version      0.1.2
 // @description  将V2EX帖子中的电话区号转换成对应的地点名称
 // @author       Steve5wutongyu6
 // @match        https://v2ex.com/*
 // @match        https://*.v2ex.com/*
 // @grant        none
+// @license      MIT
+// @downloadURL https://update.greasyfork.org/scripts/487693/V2EX%20%E5%8C%BA%E5%8F%B7%E8%BD%AC%E6%8D%A2%E5%99%A8.user.js
+// @updateURL https://update.greasyfork.org/scripts/487693/V2EX%20%E5%8C%BA%E5%8F%B7%E8%BD%AC%E6%8D%A2%E5%99%A8.meta.js
 // ==/UserScript==
 
 (function() {
@@ -369,7 +372,7 @@
     };
 
     var replaceContent = function(el) {
-        el.innerHTML = el.innerHTML.replace(/(\d{3})(?=\D|$)/g, function(match, areaCode) {
+        el.innerHTML = el.innerHTML.replace(/(\d{3,4})(?=\D|$)/g, function(match, areaCode) {
             if (areaCodes.hasOwnProperty(areaCode)) {
                 return '<span>' + match + '</span>' + '(' + '<span  style="color:#EE6F2D">' + areaCodes[areaCode] + '</span>' + ')';
             }
@@ -380,6 +383,11 @@
     var topicContent = document.getElementsByClassName("topic_content")[0];
     if (topicContent) {
         replaceContent(topicContent);
+    }
+
+    var titleContent = document.querySelector(".header h1");
+    if (titleContent) {
+        replaceContent(titleContent);
     }
 
     var replyContent = document.getElementsByClassName("reply_content");
