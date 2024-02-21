@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         V2EX 区号转换器
 // @namespace    https://github.com/Steve5wutongyu6/v2ex-area-code-conversion
-// @version      0.1.2
+// @version      0.1.3
 // @description  将V2EX帖子中的电话区号转换成对应的地点名称
 // @author       Steve5wutongyu6
 // @match        https://v2ex.com/*
@@ -388,6 +388,16 @@
     var titleContent = document.querySelector(".header h1");
     if (titleContent) {
         replaceContent(titleContent);
+    }
+
+
+    // 处理帖子列表
+    var postCells = document.querySelectorAll("#TopicsNode>div.cell");
+    for (var i = 0; i < postCells.length; i++) {
+        var postContent = postCells[i].querySelector(".item_title a");
+        if (postContent) {
+            replaceContent(postContent);
+        }
     }
 
     var replyContent = document.getElementsByClassName("reply_content");
