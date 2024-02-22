@@ -6,6 +6,7 @@
 // @author       Steve5wutongyu6
 // @match        https://v2ex.com/*
 // @match        https://*.v2ex.com/*
+// @match        https://*.machbbs.com/v2ex/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/487693/V2EX%20%E5%8C%BA%E5%8F%B7%E8%BD%AC%E6%8D%A2%E5%99%A8.user.js
