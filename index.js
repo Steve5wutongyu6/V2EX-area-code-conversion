@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         V2EX 区号转换器
 // @namespace    https://github.com/Steve5wutongyu6/v2ex-area-code-conversion
-// @version      0.1.3
+// @version      0.1.4
 // @description  将V2EX帖子中的电话区号转换成对应的地点名称
 // @author       Steve5wutongyu6
 // @match        https://v2ex.com/*
