@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         V2EX 区号转换器
 // @namespace    https://github.com/Steve5wutongyu6/v2ex-area-code-conversion
-// @version      0.1.4
+// @version      0.1.5
 // @description  将V2EX帖子中的电话区号转换成对应的地点名称
 // @author       Steve5wutongyu6
 // @match        https://v2ex.com/*
 // @match        https://*.v2ex.com/*
-// @match        https://*.machbbs.com/v2ex/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/487693/V2EX%20%E5%8C%BA%E5%8F%B7%E8%BD%AC%E6%8D%A2%E5%99%A8.user.js
@@ -373,7 +372,7 @@
     };
 
     var replaceContent = function(el) {
-        el.innerHTML = el.innerHTML.replace(/(\d{3,4})(?=\D|$)/g, function(match, areaCode) {
+        el.innerHTML = el.innerHTML.replace(/(\d{3,4})(?=\D|$)(?!(<\/a>|">))/g, function(match, areaCode) {
             if (areaCodes.hasOwnProperty(areaCode)) {
                 return '<span>' + match + '</span>' + '(' + '<span  style="color:#EE6F2D">' + areaCodes[areaCode] + '</span>' + ')';
             }
@@ -407,4 +406,5 @@
             replaceContent(replyContent[i]);
         }
     }
+
 })();
